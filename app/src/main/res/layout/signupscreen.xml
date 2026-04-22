@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/tvSignUpTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Get your free LBC Online account now"
+            android:textColor="#333333"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvFirstLabel"
+            style="@style/LabelStyle"
+            android:text="First Name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSignUpTitle" />
+
+        <EditText
+            android:id="@+id/etFirstName"
+            style="@style/InputBoxStyle"
+            android:inputType="textPersonName"
+            app:layout_constraintTop_toBottomOf="@id/tvFirstLabel" />
+
+        <TextView
+            android:id="@+id/tvLastLabel"
+            style="@style/LabelStyle"
+            android:text="Last Name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etFirstName" />
+
+        <EditText
+            android:id="@+id/etLastName"
+            style="@style/InputBoxStyle"
+            android:inputType="textPersonName"
+            app:layout_constraintTop_toBottomOf="@id/tvLastLabel" />
+
+        <TextView
+            android:id="@+id/tvEmailLabel"
+            style="@style/LabelStyle"
+            android:text="Email Address"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etLastName" />
+
+        <EditText
+            android:id="@+id/etEmailSignUp"
+            style="@style/InputBoxStyle"
+            android:inputType="textEmailAddress"
+            app:layout_constraintTop_toBottomOf="@id/tvEmailLabel" />
+
+        <TextView
+            android:id="@+id/tvMobileLabel"
+            style="@style/LabelStyle"
+            android:text="Mobile Number(+63 900 000 0000)"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etEmailSignUp" />
+
+        <EditText
+            android:id="@+id/etMobile"
+            style="@style/InputBoxStyle"
+            android:hint="+63"
+            android:inputType="phone"
+            app:layout_constraintTop_toBottomOf="@id/tvMobileLabel" />
+
+        <TextView
+            android:id="@+id/tvMobileInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="ⓘ Mobile number will be used to send Status Notifications, Verification Codes and OTP"
+            android:textColor="#4285F4"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etMobile" />
+
+        <TextView
+            android:id="@+id/tvPassLabel"
+            style="@style/LabelStyle"
+            android:text="Password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvMobileInfo" />
+
+        <EditText
+            android:id="@+id/etPasswordSignUp"
+            style="@style/InputBoxStyle"
+            android:drawableEnd="@android:drawable/ic_menu_view"
+            android:inputType="textPassword"
+            app:layout_constraintTop_toBottomOf="@id/tvPassLabel" />
+
+        <CheckBox
+            android:id="@+id/cbUpdates"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Please keep me updated with offers/promo, news and more information about your services"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etPasswordSignUp" />
+
+        <CheckBox
+            android:id="@+id/cbTerms"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="I agree to LBC's Terms of Service and Privacy Policy"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cbUpdates" />
+
+        <Button
+            android:id="@+id/btnSignUpSubmit"
+            android:layout_width="200dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#C4A4A4"
+            android:text="Sign Up"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:cornerRadius="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cbTerms" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="32dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnSignUpSubmit">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already have an account? " />
+
+            <TextView
+                android:id="@+id/tvSignInLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign In"
+                android:textColor="#D81B60"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
