@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
-import android.widget.LinearLayout
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class LogInActivity : AppCompatActivity() {
@@ -15,38 +17,66 @@ class LogInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.loginscreen)
 
-        // 1. Initialize Views
-        val etEmail = findViewById<EditText>(R.id.etEmail)
+        val etIdentifier = findViewById<EditText>(R.id.etIdentifier)
         val etPassword = findViewById<EditText>(R.id.etPassword)
         val btnSignIn = findViewById<Button>(R.id.btnSignIn)
-        val btnGoogle = findViewById<LinearLayout>(R.id.btnGoogle)
         val tvSignUp = findViewById<TextView>(R.id.tvSignUp)
+        val tvIdentifierLabel = findViewById<TextView>(R.id.tvIdentifierLabel)
+        val rgRole = findViewById<RadioGroup>(R.id.rgRole)
+        val rbEmployee = findViewById<RadioButton>(R.id.rbEmployee)
 
-        // 2. Google Sign In Mock
-        btnGoogle.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java).apply {
-                putExtra("EXTRA_EMAIL", "google_user@gmail.com")
-                putExtra("EXTRA_PASSWORD", "Logged in via Google")
-            }
-            startActivity(intent)
+        rgRole.setOnCheckedChangeListener { _, checkedId ->
+            val isEmployee = rgRole.checkedRadioButtonId == R.id.rbEmployee
+            tvIdentifierLabel.text = if (isEmployee) "Employee Email" else "Customer Email"
+            etIdentifier.hint = if (isEmployee) "example@lbc.com" else "Enter your registered email"
+            tvSignUp.visibility = if (isEmployee) TextView.GONE else TextView.VISIBLE
         }
+        rgRole.check(R.id.rbCustomer)
 
-        // 3. Email/Password Sign In Logic
         btnSignIn.setOnClickListener {
-            val email = etEmail.text.toString().trim()
+            val email = etIdentifier.text.toString().trim()
             val password = etPassword.text.toString().trim()
 
-            if (validate(email, password, etEmail, etPassword)) {
-                val intent = Intent(this, MainActivity::class.java).apply {
-                    putExtra("EXTRA_EMAIL", email)
-                    putExtra("EXTRA_PASSWORD", password)
+            if (validate(email, password, etIdentifier, etPassword)) {
+                val isEmployee = rgRole.checkedRadioButtonId == R.id.rbEmployee
+                android.util.Log.d("LOGIN_DEBUG", "Checked ID: ${rgRole.checkedRadioButtonId}, Expected ID: ${R.id.rbEmployee}")
+                if (isEmployee) {
+                    val role = resolveEmployeeRole(email, password)
+                    if (role != null) {
+                        val destination = if (role == "Admin") {
+                            AdminDashboardActivity::class.java
+                        } else {
+                            EmployeeHomeActivity::class.java
+                        }
+                        val intent = Intent(this, destination).apply {
+                            putExtra("EXTRA_ROLE", role)
+                            putExtra("EXTRA_EMAIL", email)
+                        }
+                        startActivity(intent)
+                        return@setOnClickListener
+                    }
+                    Toast.makeText(this, "Invalid employee credentials.", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
                 }
-                startActivity(intent)
+
+                val prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+                val savedEmail = prefs.getString("KEY_EMAIL", null)
+                val savedPassword = prefs.getString("KEY_PASSWORD", null)
+                if (savedEmail == null || savedPassword == null) {
+                    Toast.makeText(this, "No customer account found. Please sign up first.", Toast.LENGTH_LONG).show()
+                    return@setOnClickListener
+                }
+                if (email.equals(savedEmail, ignoreCase = true) && password == savedPassword) {
+                    val intent = Intent(this, MainActivity::class.java).apply {
+                        putExtra("EXTRA_EMAIL", email)
+                    }
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(this, "Invalid customer credentials.", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 
-        // 4. Navigation to Sign Up Activity
-        // Note: Make sure SignUpActivity is registered in AndroidManifest.xml!
         tvSignUp.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
@@ -73,5 +103,15 @@ class LogInActivity : AppCompatActivity() {
         }
 
         return isValid
+    }
+
+    private fun resolveEmployeeRole(email: String, password: String): String? {
+        val employeeAccounts = mapOf(
+            "admin@lbc.com" to Pair("admin123", "Admin"),
+            "branch@lbc.com" to Pair("branch123", "Branch Staff"),
+            "rider@lbc.com" to Pair("rider123", "Rider")
+        )
+        val account = employeeAccounts[email.lowercase()] ?: return null
+        return if (account.first == password) account.second else null
     }
 }

@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#F8FAFC"
+    android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarReceiver"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="#D81B60"
-        app:layout_constraintTop_toTopOf="parent">
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:src="@drawable/lbc_logo_white" />
-    </androidx.appcompat.widget.Toolbar>
+        android:layout_height="56dp"
+        android:background="#E31A2D"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LBC"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
-        app:layout_constraintTop_toBottomOf="@id/toolbarReceiver">
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,100 +33,128 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:padding="12dp"
+                android:text="✓ 2  Receiver Information   3  4"
+                android:textStyle="bold" />
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="2dp"
-                android:layout_marginBottom="24dp">
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="10dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_check_green" />
-                    <TextView android:layout_width="24dp" android:layout_height="24dp" android:layout_marginStart="8dp" android:background="@drawable/circle_red" android:text="2" android:textColor="#FFFFFF" android:gravity="center" android:textStyle="bold"/>
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="8dp" android:text="Receiver Information" android:textStyle="bold" android:textColor="#333333"/>
-                    <TextView style="@style/StepCircleInactive" android:text="3" />
-                    <TextView style="@style/StepCircleInactive" android:text="4" android:layout_marginStart="8dp"/>
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Delivery Method"
+                        android:textStyle="bold" />
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checkedButton="@id/rbBranchPickUp"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rbBranchPickUp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="#E31A2D"
+                            android:text="Branch Pick Up" />
+
+                        <RadioButton
+                            android:id="@+id/rbRiderDelivery"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:buttonTint="#E31A2D"
+                            android:text="Rider Delivery" />
+                    </RadioGroup>
+
+                    <TextView style="@style/LabelStyle" android:text="First Name *" />
+                    <EditText android:id="@+id/etReceiverFirst" style="@style/InputBoxStyle" />
+
+                    <TextView style="@style/LabelStyle" android:text="Last Name *" />
+                    <EditText android:id="@+id/etReceiverLast" style="@style/InputBoxStyle" />
+
+                    <TextView style="@style/LabelStyle" android:text="Phone Number *" />
+                    <EditText
+                        android:id="@+id/etReceiverPhone"
+                        style="@style/InputBoxStyle"
+                        android:inputType="phone" />
+
+                    <LinearLayout
+                        android:id="@+id/layoutBranchSection"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView style="@style/LabelStyle" android:text="Province *" />
+                        <Spinner android:id="@+id/spReceiverProvince" style="@style/InputBoxStyle" android:background="@drawable/spinner_bg" />
+                        <TextView style="@style/LabelStyle" android:text="City/Municipality *" />
+                        <Spinner android:id="@+id/spReceiverCity" style="@style/InputBoxStyle" android:background="@drawable/spinner_bg" />
+                        <TextView style="@style/LabelStyle" android:text="Branch *" />
+                        <Spinner android:id="@+id/spReceiverBranch" style="@style/InputBoxStyle" android:background="@drawable/spinner_bg" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layoutRiderSection"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView style="@style/LabelStyle" android:text="Street / Barangay *" />
+                        <EditText android:id="@+id/etRiderStreet" style="@style/InputBoxStyle" />
+                        <TextView style="@style/LabelStyle" android:text="Province *" />
+                        <Spinner android:id="@+id/spRiderProvince" style="@style/InputBoxStyle" android:background="@drawable/spinner_bg" />
+                        <TextView style="@style/LabelStyle" android:text="City / Municipality *" />
+                        <Spinner android:id="@+id/spRiderCity" style="@style/InputBoxStyle" android:background="@drawable/spinner_bg" />
+                    </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Delivery Method" android:textStyle="bold" android:textSize="16sp" android:textColor="#000000"/>
-
-            <RadioGroup
-                android:id="@+id/rgDeliveryMethod"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal">
-                <RadioButton android:id="@+id/rbBranchPickUp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Branch Pick Up"  android:buttonTint="#D81B60"/>
-                <RadioButton android:id="@+id/rbRiderDelivery" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Rider Delivery" android:layout_marginStart="16dp" android:buttonTint="#D81B60"/>
-            </RadioGroup>
-
-            <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Receiver Details" android:textSize="18sp" android:textStyle="bold" android:textColor="#000000"/>
-            </RelativeLayout>
-
-            <TextView style="@style/LabelStyle" android:text="First Name *" />
-            <EditText android:id="@+id/etReceiverFirst" style="@style/InputBoxStyle" />
-
-            <TextView style="@style/LabelStyle" android:text="Last Name *" />
-            <EditText android:id="@+id/etReceiverLast" style="@style/InputBoxStyle" />
-
-            <TextView style="@style/LabelStyle" android:text="Phone Number *" />
-            <LinearLayout android:layout_width="match_parent" android:layout_height="50dp" android:background="@drawable/rounded_edittext" android:gravity="center_vertical" android:paddingStart="12dp">
-                <ImageView android:layout_width="24dp" android:layout_height="16dp" android:src="@drawable/flag_ph" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" +63 | " />
-                <EditText android:layout_width="match_parent" android:layout_height="match_parent" android:background="@android:color/transparent" android:hint="9XX XXX XXXX" android:inputType="phone"/>
-            </LinearLayout>
-
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:text="Pick Up Branch" android:textStyle="bold" android:textColor="#000000"/>
-
-            <TextView style="@style/LabelStyle" android:text="Province*" />
-            <Spinner android:id="@+id/spReceiverProvince" style="@style/InputBoxStyle" android:background="@drawable/spinner_bg" />
-
-            <TextView style="@style/LabelStyle" android:text="City/Municipality*" />
-            <Spinner android:id="@+id/spReceiverCity" style="@style/InputBoxStyle" android:background="@drawable/spinner_bg" />
-
-            <TextView style="@style/LabelStyle" android:text="Branch*" />
-            <Spinner android:id="@+id/spReceiverBranch" style="@style/InputBoxStyle" android:background="@drawable/spinner_bg" />
-
         </LinearLayout>
     </ScrollView>
 
     <LinearLayout
-        android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:padding="16dp">
 
         <Button
             android:id="@+id/btnBack"
             android:layout_width="0dp"
-            android:layout_height="55dp"
-            android:layout_weight="1"
+            android:layout_height="52dp"
             android:layout_marginEnd="8dp"
-            android:text="Back"
-            android:textColor="#D81B60"
+            android:layout_weight="1"
             android:backgroundTint="#FFFFFF"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            app:cornerRadius="28dp"
-            app:strokeColor="#D81B60" />
+            android:text="Back"
+            android:textAllCaps="false"
+            android:textColor="#E31A2D"
+            app:strokeColor="#E31A2D"
+            app:strokeWidth="1dp" />
 
         <Button
             android:id="@+id/btnNextReceiver"
             android:layout_width="0dp"
-            android:layout_height="55dp"
-            android:layout_weight="1"
+            android:layout_height="52dp"
             android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:backgroundTint="#E31A2D"
             android:text="Next"
-            android:backgroundTint="#BCBCBC"
-            android:textColor="#FFFFFF"
-            app:cornerRadius="28dp" />
+            android:textAllCaps="false"
+            android:textStyle="bold" />
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

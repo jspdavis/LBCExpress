@@ -3,141 +3,94 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#F3F4F6">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="24dp">
+        android:padding="20dp">
 
-        <TextView
-            android:id="@+id/tvSignUpTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="Get your free LBC Online account now"
-            android:textColor="#333333"
-            android:textSize="20sp"
-            android:textStyle="bold|italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvFirstLabel"
-            style="@style/LabelStyle"
-            android:text="First Name"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvSignUpTitle" />
-
-        <EditText
-            android:id="@+id/etFirstName"
-            style="@style/InputBoxStyle"
-            android:inputType="textPersonName"
-            app:layout_constraintTop_toBottomOf="@id/tvFirstLabel" />
-
-        <TextView
-            android:id="@+id/tvLastLabel"
-            style="@style/LabelStyle"
-            android:text="Last Name"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etFirstName" />
-
-        <EditText
-            android:id="@+id/etLastName"
-            style="@style/InputBoxStyle"
-            android:inputType="textPersonName"
-            app:layout_constraintTop_toBottomOf="@id/tvLastLabel" />
-
-        <TextView
-            android:id="@+id/tvEmailLabel"
-            style="@style/LabelStyle"
-            android:text="Email Address"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etLastName" />
-
-        <EditText
-            android:id="@+id/etEmailSignUp"
-            style="@style/InputBoxStyle"
-            android:inputType="textEmailAddress"
-            app:layout_constraintTop_toBottomOf="@id/tvEmailLabel" />
-
-        <TextView
-            android:id="@+id/tvMobileLabel"
-            style="@style/LabelStyle"
-            android:text="Mobile Number(+63 900 000 0000)"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etEmailSignUp" />
-
-        <EditText
-            android:id="@+id/etMobile"
-            style="@style/InputBoxStyle"
-            android:hint="+63"
-            android:inputType="phone"
-            app:layout_constraintTop_toBottomOf="@id/tvMobileLabel" />
-
-        <TextView
-            android:id="@+id/tvMobileInfo"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/signUpCard"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="ⓘ Mobile number will be used to send Status Notifications, Verification Codes and OTP"
-            android:textColor="#4285F4"
-            android:textSize="12sp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etMobile" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tvPassLabel"
-            style="@style/LabelStyle"
-            android:text="Password"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvMobileInfo" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/etPasswordSignUp"
-            style="@style/InputBoxStyle"
-            android:drawableEnd="@android:drawable/ic_menu_view"
-            android:inputType="textPassword"
-            app:layout_constraintTop_toBottomOf="@id/tvPassLabel" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#D3112D"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="18dp">
 
-        <CheckBox
-            android:id="@+id/cbUpdates"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Please keep me updated with offers/promo, news and more information about your services"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etPasswordSignUp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sign Up for LBC"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
-        <CheckBox
-            android:id="@+id/cbTerms"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="I agree to LBC's Terms of Service and Privacy Policy"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cbUpdates" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-        <Button
-            android:id="@+id/btnSignUpSubmit"
-            android:layout_width="200dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="24dp"
-            android:backgroundTint="#C4A4A4"
-            android:text="Sign Up"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            app:cornerRadius="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cbTerms" />
+                    <TextView
+                        style="@style/LabelStyle"
+                        android:text="Full Name" />
+
+                    <EditText
+                        android:id="@+id/etFirstName"
+                        style="@style/InputBoxStyle"
+                        android:hint="Juan Dela Cruz"
+                        android:inputType="textPersonName" />
+
+                    <TextView
+                        style="@style/LabelStyle"
+                        android:text="Email Address" />
+
+                    <EditText
+                        android:id="@+id/etEmailSignUp"
+                        style="@style/InputBoxStyle"
+                        android:hint="name@email.com"
+                        android:inputType="textEmailAddress" />
+
+                    <TextView
+                        style="@style/LabelStyle"
+                        android:text="Password" />
+
+                    <EditText
+                        android:id="@+id/etPasswordSignUp"
+                        style="@style/InputBoxStyle"
+                        android:inputType="textPassword" />
+
+                    <Button
+                        android:id="@+id/btnSignUpSubmit"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_marginTop="14dp"
+                        android:backgroundTint="#D3112D"
+                        android:text="Create Account"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold"
+                        app:cornerRadius="10dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -148,7 +101,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnSignUpSubmit">
+            app:layout_constraintTop_toBottomOf="@id/signUpCard">
 
             <TextView
                 android:layout_width="wrap_content"

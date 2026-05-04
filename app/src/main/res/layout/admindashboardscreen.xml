@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F7F6"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#212121"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="12dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="LBC EXPRESS SYSTEM ADMIN"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogoutAdmin"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:backgroundTint="#FFFFFF"
+            android:text="Logout"
+            android:textAllCaps="false"
+            android:textColor="#D32F2F"
+            android:textSize="12sp"
+            app:cornerRadius="8dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvAdminName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="12dp"
+        android:paddingTop="8dp"
+        android:textColor="#111827"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnTabStaff"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            android:backgroundTint="#FFFFFF"
+            android:text="Staff Directory"
+            android:textAllCaps="false"
+            android:textColor="#111827"
+            android:textSize="12sp"
+            app:strokeColor="#D32F2F"
+            app:strokeWidth="1dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnTabRiders"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="4dp"
+            android:layout_weight="1"
+            android:backgroundTint="#FFFFFF"
+            android:text="Rider Directory"
+            android:textAllCaps="false"
+            android:textColor="#111827"
+            android:textSize="12sp"
+            app:strokeColor="#D32F2F"
+            app:strokeWidth="1dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnTabShipments"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:backgroundTint="#FFFFFF"
+            android:text="Shipment Tracking"
+            android:textAllCaps="false"
+            android:textColor="#111827"
+            android:textSize="12sp"
+            app:strokeColor="#D32F2F"
+            app:strokeWidth="1dp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Register New Staff"
+                        android:textColor="#D32F2F"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/etStaffName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginTop="6dp"
+                        android:background="@android:drawable/edit_text"
+                        android:hint="Full Name" />
+
+                    <EditText
+                        android:id="@+id/etStaffEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginTop="6dp"
+                        android:background="@android:drawable/edit_text"
+                        android:hint="Email Address"
+                        android:inputType="textEmailAddress" />
+
+                    <EditText
+                        android:id="@+id/etStaffPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginTop="6dp"
+                        android:background="@android:drawable/edit_text"
+                        android:hint="Initial Password"
+                        android:inputType="textPassword" />
+
+                    <Spinner
+                        android:id="@+id/spStaffRole"
+                        style="@style/InputBoxStyle"
+                        android:background="@drawable/spinner_bg" />
+
+                    <LinearLayout
+                        android:id="@+id/layoutRiderFields"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <EditText
+                            android:id="@+id/etLicenseNo"
+                            style="@style/InputBoxStyle"
+                            android:hint="Driver's License No." />
+
+                        <Spinner
+                            android:id="@+id/spVehicleType"
+                            style="@style/InputBoxStyle"
+                            android:background="@drawable/spinner_bg" />
+
+                        <EditText
+                            android:id="@+id/etPlateNo"
+                            style="@style/InputBoxStyle"
+                            android:hint="Plate Number" />
+                    </LinearLayout>
+
+                    <Spinner
+                        android:id="@+id/spStaffBranch"
+                        style="@style/InputBoxStyle"
+                        android:background="@drawable/spinner_bg" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnCreateAccount"
+                        android:layout_width="match_parent"
+                        android:layout_height="46dp"
+                        android:backgroundTint="#D32F2F"
+                        android:text="CREATE ACCOUNT"
+                        android:textAllCaps="false"
+                        android:textStyle="bold"
+                        app:cornerRadius="8dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/sectionStaff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Staff Directory"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/containerStaffDirectory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/sectionRiders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rider Directory"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/containerRiderDirectory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/sectionShipments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Global Shipment Overview"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/containerShipmentTracking"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
